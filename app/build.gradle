@@ -10,20 +10,46 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        jackOptions {
+            enabled true
+            additionalParameters('jack.incremental': 'true')
+        }
     }
+
+    compileOptions {
+        incremental true
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dexOptions {
+        maxProcessCount 4
+        javaMaxHeapSize "2g"
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+    compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'io.reactivex.rxjava2:rxandroid:2.0.0'
+    compile 'io.reactivex.rxjava2:rxjava:2.0.0'
+
     compile 'com.android.support:appcompat-v7:25.0.0'
-    testCompile 'junit:junit:4.12'
+
+    compile 'com.github.pires:obd-java-api:1.0'
 }
