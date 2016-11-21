@@ -1,10 +1,9 @@
-package com.mv2studio.myride.connection;
+package com.mv2studio.myride.connection
 
 /**
- * Created by matej on 1.11.16.
+ * Created by matej on 15/11/2016.
  */
-
-public enum ConnectionState {
+enum class ConnectionState {
 
     UNKNOWN,
     BT_OFF,
