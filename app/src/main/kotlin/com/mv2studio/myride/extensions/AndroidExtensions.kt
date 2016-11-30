@@ -18,6 +18,7 @@ import com.mv2studio.myride.App
  */
 
 val context = App.appContext
+val assets = context.assets
 val res = context.resources
 
 fun Int.asDpToPx(): Int = ((this * res.displayMetrics.density) + .5f).toInt()
